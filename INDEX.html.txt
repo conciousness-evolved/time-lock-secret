@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Time-Locked Secret</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="message"></div>
+
+  <script>
+    const now = new Date();
+    const start = new Date("2025-10-12T02:00:00-03:00");  // UTC-3 (Brazil time)
+    const end = new Date("2025-10-12T02:10:00-03:00");
+
+    if (now >= start && now <= end) {
+      document.getElementById("message").innerHTML = `
+        <h1>🔐 Secret Message</h1>
+        <p>The password is: <strong>BLACKROSE42</strong></p>
+      `;
+    } else {
+      document.getElementById("message").innerHTML = `
+        <h1>⏳ Too Early or Too Late</h1>
+        <p>This message is only available between 2:00 and 2:10 AM on <strong>October 12th</strong> (Brazil time).</p>
+      `;
+    }
+  </script>
+</body>
+</html>
